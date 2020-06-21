@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, Alert, TouchableOpacity } from 'react-native';
 import ParagraphComponent from './ParagraphComponent';
-import { ListItem, Button } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const list = [
@@ -39,18 +39,9 @@ export default function ContactsScreen({ navigation }) {
           />
         ))
       }
-      <Button
-        icon={
-          <Icon
-            name="arrow-right"
-            size={15}
-            color="#E7698A"
-          />
-        }
-        title="Add contact"
-        type="clear"
-        onPress={() => navigation.navigate('Calibration')}
-      />
+      <TouchableOpacity onPress={() => { navigation.navigate('Calibration') }} style={{ margin: 20 }}>
+        <Image source={require('./images/addContact.png')} />
+      </TouchableOpacity>
       <View style={{ justifyContent: 'flex-end', flex: 1, marginBottom: 30, marginLeft: 10 }}>
         <Text>Your code: <Text style={styles.codeColor}>XFD14</Text></Text>
       </View>

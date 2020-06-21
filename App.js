@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -77,7 +77,6 @@ export default function App() {
 }
 
 const allScreenOptions = {
-  text: "LUCID",
   headerStyle: {
     backgroundColor: '#fff',
   },
@@ -86,8 +85,14 @@ const allScreenOptions = {
     fontWeight: 'bold',
     color: '#E7698A',
   },
+  headerBackground: () => (
+    <Image
+      style={{ width: 375, resizeMode: 'cover'}}
+      source={require('./images/lucid.png')}
+    />
+  ),
 }
 
 const commonHeaderOptions = {
-  title: "LUCID",
+  title: "",
 }
