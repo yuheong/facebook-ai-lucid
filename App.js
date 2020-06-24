@@ -8,6 +8,7 @@ import ContactsScreen from './ContactsScreen';
 import TestScreen from './TestScreen';
 import TestPageScreen from './TestPageScreen';
 import CalibrationScreens from './CalibrationScreens';
+import HelpScreen from './HelpScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const HomeStack = createStackNavigator();
@@ -17,6 +18,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator screenOptions={allScreenOptions}>
       <HomeStack.Screen name="Home" component={HomeScreen} options={commonHeaderOptions} />
       <HomeStack.Screen name="Calibration" component={CalibrationScreens} options={commonHeaderOptions} />
+      <HomeStack.Screen name="Help" component={HelpScreen} options={commonHeaderOptions} />
     </HomeStack.Navigator>
   );
 }

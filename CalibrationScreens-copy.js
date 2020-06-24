@@ -7,10 +7,9 @@ import * as Progress from 'react-native-progress';
 import * as Permissions from 'expo-permissions';
 import * as FileSystem from 'expo-file-system';
 
-const testingPrompts = ['What should you do when you\'re freezing in an air-conditioned room and want to feel warmer?', 'What do you do when you\'re feeling thirsty?'];
-const API_URL = 'https://lucidai.herokuapp.com/'
+const testingPrompts = ['He does not eat chilli as he is not afraid of the spiciness.', 'I\'m trying to think of a sentence but I just can\'t, so this will have to do.'];
 
-export default class TestScreen extends React.Component {
+export default class CalibrationScreens extends React.Component {
   constructor(props) {
     super(props);
     this.recording = null;
@@ -37,11 +36,11 @@ export default class TestScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <View style={{ flex: 1, alignItems: 'center', marginTop: 50 }}>
-          <Progress.Bar progress={this.state.progress / testingPrompts.length} width={300} color={'#E7698A'} />
+          <Progress.Bar progress={(this.state.progress + 1) / 2} width={300} color={'#E7698A'} />
           <Text>Read the following sentence</Text>
           <CardComponent cardText={testingPrompts[this.state.progress]} />
           <TouchableOpacity onPress={() => { this.setState({ progress: this.state.progress + 1 }) }}>
-            <Text>Current step: {this.state.progress}</Text>
+            <Text>Current step: {this.state.progress} {this.state.haveRecordingPermissions}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}

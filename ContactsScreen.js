@@ -39,7 +39,7 @@ export default function ContactsScreen({ navigation }) {
           />
         ))
       }
-      <TouchableOpacity onPress={() => { navigation.navigate('Calibration') }} style={{ margin: 20 }}>
+      <TouchableOpacity onPress={() => {  }} style={{ margin: 20 }}>
         <Image source={require('./images/addContact.png')} />
       </TouchableOpacity>
       <View style={{ justifyContent: 'flex-end', flex: 1, marginBottom: 30, marginLeft: 10 }}>
