@@ -9,8 +9,8 @@ import * as FileSystem from 'expo-file-system';
 import ResultComponent from './ResultComponent';
 import AcknowledgeComponent from './AcknowledgeComponent';
 
-const testingPrompts = ['What should you do when you\'re freezing in an air-conditioned room and want to feel warmer?'] //, 'What do you do when you\'re feeling thirsty?'];
-const prompt = ['What should you do in order to take up by 8am for your meeting?']
+const testingPrompts1 = ['What should you do to make an air-conditioned room warmer?'] //, 'What do you do when you\'re feeling thirsty?'];
+const testingPrompts2 = ['What should you do in order to ensure you can wake up by 8AM for your meeting tomorrow?']
 const API_URL = 'https://lucidai.herokuapp.com/'
 
 export default class TestScreen extends React.Component {
@@ -38,11 +38,11 @@ export default class TestScreen extends React.Component {
   render() {
     const { navigation } = this.props
     let content;
-    if (this.state.progress < testingPrompts.length) {
+    if (this.state.progress < testingPrompts1.length) {
       content = (
         <>
           <Text style={styles.codeColor}>Answer the following question</Text>
-          <CardComponent cardText={prompt[this.state.progress]} />
+          <CardComponent cardText={testingPrompts2[this.state.progress]} />
         </>
       )
     } else if (this.state.progress === 1) {
@@ -61,7 +61,7 @@ export default class TestScreen extends React.Component {
 
     return (
       <View style={{ flex: 1, alignItems: 'center', marginTop: 50 }}>
-        <Progress.Bar progress={this.state.progress / testingPrompts.length} width={300} color={'#E7698A'} />
+        <Progress.Bar progress={this.state.progress / testingPrompts1.length} width={300} color={'#E7698A'} />
         {content}
         
         <TouchableOpacity onPress={() => { this.setState({ progress: this.state.progress + 1 }) }}>
