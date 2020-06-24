@@ -41,7 +41,7 @@ export default function HomeScreen({ navigation }) {
           <Image source={require('./images/beginCalibration.png')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={_showAlert}>
-          <Text>AAAA</Text>
+          <Text></Text>
         </TouchableOpacity>
       </View>
     </View>

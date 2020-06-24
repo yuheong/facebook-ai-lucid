@@ -11,11 +11,16 @@ export default function HelpScreen({ navigation }) {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <ParagraphComponent title={title} text={text} />
       <Image style={{ margin: 20 }} source={require('./images/map.png')} />
-      <TouchableOpacity onPress={() => {  }} style={{ margin: 20 }}>
-        <Text>Listen to voice recording</Text>
+      <TouchableOpacity onPress={() => { }} style={{ margin: 20 }}>
+        <Image source={require('./images/playback.png')} />
       </TouchableOpacity>
-      <View style={{ justifyContent: 'flex-end', flex: 1, marginBottom: 30, marginLeft: 10 }}>
-        <Text>Your code: <Text style={styles.codeColor}>XFD14</Text></Text>
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity onPress={() => { }}>
+          <Image source={require('./images/intoxicated.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => { }}>
+          <Image source={require('./images/false.png')} />
+        </TouchableOpacity>
       </View>
     </View>
   );
