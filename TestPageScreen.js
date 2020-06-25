@@ -63,17 +63,17 @@ export default class TestScreen extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', marginTop: 50 }}>
         <Progress.Bar progress={this.state.progress / testingPrompts1.length} width={300} color={'#E7698A'} />
         {content}
-        
+
         <TouchableOpacity onPress={() => { this.setState({ progress: this.state.progress + 1 }) }}>
-          <Text style={{color: "white"}}>Current step: {this.state.progress}</Text>
+          <Text style={{ color: "white" }}>Current step: {this.state.progress}</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-            style={styles.button}
-            onPressIn={this.handleOnPressIn}
-            onPressOut={this.handleOnPressOut}
-          >
-            <Text>Record</Text>
-          </TouchableOpacity> */}
+        <TouchableOpacity
+          style={styles.button}
+          onPressIn={this.handleOnPressIn}
+          onPressOut={this.handleOnPressOut}
+        >
+          <Text>Record</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -83,20 +83,25 @@ export default class TestScreen extends React.Component {
     try {
       const info = await FileSystem.getInfoAsync(this.recording.getURI());
       console.log(`FILE INFO: ${JSON.stringify(info)}`);
-      {/* const uri = info.uri;
-            const formData = new FormData();
-            formData.append('file', {
-                uri,
-                type: 'audio/x-wav',
-                name: 'speech2text'
-            });
-            const response = await fetch(config.CLOUD_FUNCTION_URL, {
-                method: 'POST',
-                body: formData
-            });
-            const data = await response.json();
-            console.log(data);
-            this.setState({ query: data.transcript }); */}
+
+      const uri = info.uri;
+      const formData = new FormData();
+      formData.append('type', 'alarm');
+      formData.append('value', '8');
+      formData.append('file', {
+        uri,
+        type: 'audio/x-wav',
+        name: 'speech2text'
+      });
+      
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        body: formData
+      });
+
+      console.log(JSON.stringify(response));
+      console.log(response.Drunk, response.id)
+      //this.setState({ query: response });
     } catch (error) {
       console.log('There was an error reading file', error);
       this.stopRecording();
